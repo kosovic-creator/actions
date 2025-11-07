@@ -35,12 +35,20 @@ export default function RootLayout({
               <Link href="/" className="text-xl font-bold text-gray-900">
                 Student Management
               </Link>
-              <Link
-                href="/students"
-                className="text-blue-600 hover:text-blue-800"
-              >
-                All Students
-              </Link>
+              <div className="flex space-x-4">
+                <Link
+                  href="/students"
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  All Students
+                </Link>
+                <Link
+                  href="/test-actions"
+                  className="text-green-600 hover:text-green-800"
+                >
+                  Test Actions
+                </Link>
+              </div>
             </div>
           </div>
         </nav>

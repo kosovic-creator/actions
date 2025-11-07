@@ -1,0 +1,241 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-11-07T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_get_all_students",
+      "parentId": "fld_students",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "url": "{{ _.base_url }}/api/students",
+      "name": "📋 GET All Students",
+      "description": "Dobija sve studente iz baze podataka\n\n✅ Očekivani odgovor: Lista studenata\n🔍 Status: 200 OK",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_accept",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699363200000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_student_by_id",
+      "parentId": "fld_students",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "url": "{{ _.base_url }}/api/students/1",
+      "name": "🔍 GET Student by ID",
+      "description": "Dobija studenta po ID-u\n\n✅ Očekivani odgovor: Student objekat\n❌ Ako ne postoji: 404 Not Found\n\n💡 TIP: Zamenite '1' sa stvarnim ID studenta",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_accept",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699363199000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_student",
+      "parentId": "fld_students",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "url": "{{ _.base_url }}/api/students",
+      "name": "➕ POST Create Student",
+      "description": "Kreira novog studenta\n\n✅ Očekivani odgovor: Kreiran student sa ID\n📝 Status: 201 Created\n\n💡 TIP: Promenite name i email u Body sekciji",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Ana Marić\",\n  \"email\": \"ana.maric@example.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_content_type",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_accept",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699363198000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_student",
+      "parentId": "fld_students",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "url": "{{ _.base_url }}/api/students/1",
+      "name": "✏️ PUT Update Student",
+      "description": "Ažurira postojećeg studenta\n\n✅ Očekivani odgovor: Ažurirani student\n📝 Status: 200 OK\n❌ Ako ne postoji: 404 Not Found\n\n💡 TIP: \n1. Zamenite '1' sa stvarnim ID\n2. Promenite podatke u Body sekciji",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Ana Marić (Ažurirana)\",\n  \"email\": \"ana.updated@example.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_content_type",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_accept",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699363197000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "_type": "request"
+    },
+    {
+      "_id": "req_delete_student",
+      "parentId": "fld_students",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "url": "{{ _.base_url }}/api/students/1",
+      "name": "🗑️ DELETE Student",
+      "description": "Briše studenta po ID-u\n\n✅ Očekivani odgovor: Potvrda brisanja\n📝 Status: 200 OK\n❌ Ako ne postoji: 404 Not Found\n\n⚠️ PAŽNJA: Ova operacija je nepovratna!\n💡 TIP: Zamenite '1' sa stvarnim ID studenta",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_accept",
+          "name": "Accept",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1699363196000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "_type": "request"
+    },
+    {
+      "_id": "fld_students",
+      "parentId": "wrk_students_api",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "name": "👥 Students CRUD",
+      "description": "Osnovne CRUD operacije za studente",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1699363200000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "env_base",
+      "parentId": "wrk_students_api",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "name": "🌍 Local Development",
+      "data": {
+        "base_url": "http://localhost:3000"
+      },
+      "dataPropertyOrder": {
+        "&": ["base_url"]
+      },
+      "color": "#10b981",
+      "isPrivate": false,
+      "metaSortKey": 1699363200000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_production",
+      "parentId": "wrk_students_api",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "name": "🚀 Production",
+      "data": {
+        "base_url": "https://your-production-url.com"
+      },
+      "dataPropertyOrder": {
+        "&": ["base_url"]
+      },
+      "color": "#ef4444",
+      "isPrivate": false,
+      "metaSortKey": 1699363201000,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_cookies",
+      "parentId": "wrk_students_api",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_students_api",
+      "parentId": "wrk_students_api",
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "fileName": "Students API",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "wrk_students_api",
+      "parentId": null,
+      "modified": 1699363200000,
+      "created": 1699363200000,
+      "name": "🎓 Students API - Server Actions",
+      "description": "Next.js Server Actions API za upravljanje studentima\n\n🚀 Pokretanje aplikacije:\nnpm run dev\n\n🌐 URL: http://localhost:3000\n\n📖 Testiranje:\n1. Počnite sa GET All Students\n2. Kreirajte studente sa POST\n3. Testirajte UPDATE i DELETE sa stvarnim ID-ovima",
+      "scope": "collection",
+      "_type": "workspace"
+    }
+  ]
+}

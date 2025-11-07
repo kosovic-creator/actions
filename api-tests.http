@@ -1,0 +1,29 @@
+### Variables
+@baseUrl = http://localhost:3000
+
+### Get all students
+GET {{baseUrl}}/api/students
+
+### Get student by ID
+GET {{baseUrl}}/api/students/1
+
+### Create new student
+POST {{baseUrl}}/api/students
+Content-Type: application/json
+
+{
+  "name": "Petar Nikolić",
+  "email": "petar@example.com"
+}
+
+### Update student
+PUT {{baseUrl}}/api/students/1
+Content-Type: application/json
+
+{
+  "name": "Petar Nikolić (Updated)",
+  "email": "petar.updated@example.com"
+}
+
+### Delete student
+DELETE {{baseUrl}}/api/students/1
