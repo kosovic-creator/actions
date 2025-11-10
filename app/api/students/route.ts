@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { request } from 'https';
 
 // GET /api/students - dobij sve studente
-export async function GET(request: NextRequest) {
-  const { search } = Object.fromEntries(request.nextUrl.searchParams);
+export async function GET(req: NextRequest) {
+   const { searchParams } = new URL(req.url);
   try {
     const students = await prisma.student.findMany({
       where: {
-        name: { contains: search, mode: 'insensitive' }
+        name: { contains: searchParams.get('search') || '', mode: 'insensitive' }
       },
       orderBy: { createdAt: 'desc' }
     })
