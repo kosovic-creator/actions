@@ -1,8 +1,10 @@
 "use client";
 
 import Link from 'next/link';
-import { deleteStudent } from '@/lib/actions';
+
 import { useTransition } from 'react';
+import { useRouter } from 'next/navigation';
+import { deleteStudent } from '@/lib/actions';
 
 type Student = {
   id: number;
@@ -12,20 +14,36 @@ type Student = {
 
 type StudentsClientProps = {
   students: Student[];
+    search: string | undefined;
 };
 
-export default function StudentsClient({ students }: StudentsClientProps) {
+
+export default function StudentsClient({ students, search }: StudentsClientProps) {
   const [isPending, startTransition] = useTransition();
+    const router = useRouter();
 
   const handleDelete = (id: number) => {
     startTransition(async () => {
       const formData = new FormData();
       formData.append('id', id.toString());
       await deleteStudent(formData);
-      // Optionally: refresh page or mutate state here
-      window.location.reload();
+        router.refresh();
     });
   };
+
+    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const input = form.search as HTMLInputElement;
+        const value = input.value;
+        const params = new URLSearchParams(window.location.search);
+        if (value) {
+            params.set('search', value);
+        } else {
+            params.delete('search');
+        }
+        router.push(`?${params.toString()}`);
+    };
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -38,6 +56,22 @@ export default function StudentsClient({ students }: StudentsClientProps) {
           Add Student
         </Link>
       </div>
+
+          <form onSubmit={handleSearch} className="mb-6 flex gap-2">
+              <input
+                  type="text"
+                  name="search"
+                  defaultValue={search || ''}
+                  placeholder="Search by name or email..."
+                  className="border px-3 py-2 rounded w-full max-w-xs"
+              />
+              <button
+                  type="submit"
+                  className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
+              >
+                  Search
+              </button>
+          </form>
 
       <div className="bg-white shadow rounded-lg overflow-hidden">
         <table className="min-w-full">

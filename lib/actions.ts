@@ -5,8 +5,16 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 // Dobij sve studente
-export async function getStudents() {
+export async function getStudents(search?: string) {
   return await prisma.student.findMany({
+    where: search
+      ? {
+          OR: [
+            { name: { contains: search, mode: 'insensitive' } },
+            // { email: { contains: search, mode: 'insensitive' } }
+          ]
+        }
+      : {},
     orderBy: { createdAt: 'desc' }
   })
 }

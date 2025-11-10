@@ -2,9 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
 // GET /api/students - dobij sve studente
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const { search } = Object.fromEntries(request.nextUrl.searchParams);
   try {
     const students = await prisma.student.findMany({
+      where: {
+        name: { contains: search, mode: 'insensitive' }
+      },
       orderBy: { createdAt: 'desc' }
     })
     return NextResponse.json(students)
